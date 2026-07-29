@@ -7,3 +7,6 @@ READY-TO-PASTE WEBSITE FILES
 5. Upload/push all six files to GitHub.
 
 You no longer need portfolio.html or index(1).html after index.html is working.
+
+REVIEWS SECTION:
+The Reviews menu and section are included. Replace the sample review text, client names, and roles only with genuine feedback shared with permission.
