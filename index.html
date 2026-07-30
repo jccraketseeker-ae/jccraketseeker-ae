@@ -1504,29 +1504,76 @@
                 <h3>Join my email list</h3>
                 <p class="resource-card-intro">Enter your details, or continue directly to my services.</p>
 
-                <form id="optinForm" class="optin-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-                    <div class="form-group">
-                        <label for="subscriberName">Name</label>
-                        <input type="text" id="subscriberName" name="name" placeholder="Enter your name" autocomplete="name" required>
-                    </div>
+                <form id="optinForm"
+      class="optin-form"
+      action="https://formspree.io/f/mykrakoy"
+      method="POST"
+      accept-charset="UTF-8">
 
-                    <div class="form-group">
-                        <label for="subscriberEmail">Email address</label>
-                        <input type="email" id="subscriberEmail" name="email" placeholder="Enter your email address" autocomplete="email" required>
-                    </div>
+    <input type="hidden" name="_subject" value="New Portfolio Resource Subscription">
 
-                    <label class="consent-field">
-                        <input type="checkbox" name="consent" value="yes" required>
-                        <span>I agree to receive occasional professional updates by email and may unsubscribe at any time.</span>
-                    </label>
+    <input type="hidden"
+           name="_next"
+           value="https://jccraketseeker-ae.github.io/jccraketseeker-ae/">
 
-                    <button type="submit" class="optin-submit-button" id="optinSubmitButton">
-                        <span class="button-text">Join and View Services</span>
-                        <span class="button-loader" aria-hidden="true"></span>
-                    </button>
+    <div class="form-group">
+        <label for="subscriberName">Name</label>
+        <input
+            type="text"
+            id="subscriberName"
+            name="name"
+            placeholder="Enter your name"
+            autocomplete="name"
+            required>
+    </div>
 
-                    <p class="form-message" id="optinFormMessage" aria-live="polite"></p>
-                </form>
+    <div class="form-group">
+        <label for="subscriberEmail">Email address</label>
+        <input
+            type="email"
+            id="subscriberEmail"
+            name="email"
+            placeholder="Enter your email address"
+            autocomplete="email"
+            required>
+    </div>
+
+    <label class="consent-field">
+        <input
+            type="checkbox"
+            name="consent"
+            value="Yes"
+            required>
+
+        <span>
+            I agree to receive occasional professional updates and
+            free resources by email.
+        </span>
+    </label>
+
+    <button
+        type="submit"
+        class="optin-submit-button"
+        id="optinSubmitButton">
+
+        <span class="button-text">
+            Get Free Resources
+        </span>
+
+        <span
+            class="button-loader"
+            aria-hidden="true">
+        </span>
+
+    </button>
+
+    <p
+        class="form-message"
+        id="optinFormMessage"
+        aria-live="polite">
+    </p>
+
+</form>
 
                 <div class="optin-divider"><span>or</span></div>
                 <button type="button" class="skip-optin-link" id="skipOptinButton">View services without subscribing</button>
