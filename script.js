@@ -391,3 +391,103 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
+/* ==================================================
+   CLIENT REVIEW FORM
+================================================== */
+document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("reviewModal");
+    const openButton = document.getElementById("openReviewModal");
+    const closeButton = document.getElementById("reviewModalClose");
+    const backdrop = modal?.querySelector("[data-close-review-modal]");
+    const form = document.getElementById("reviewForm");
+    const ratingInput = document.getElementById("reviewRatingInput");
+    const ratingButtons = [...document.querySelectorAll("#interactiveRating button")];
+    const ratingHint = document.getElementById("ratingHint");
+    const submitButton = document.getElementById("reviewSubmitButton");
+    const message = document.getElementById("reviewFormMessage");
+    let selectedRating = 0;
+
+    if (!modal) return;
+
+    const paintStars = (value, className) => {
+        ratingButtons.forEach((button, index) => {
+            button.classList.toggle(className, index < value);
+        });
+    };
+
+    const openModal = () => {
+        modal.classList.add("active");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("review-modal-open");
+        setTimeout(() => document.getElementById("reviewerName")?.focus(), 50);
+    };
+
+    const closeModal = () => {
+        modal.classList.remove("active");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("review-modal-open");
+    };
+
+    openButton?.addEventListener("click", openModal);
+    closeButton?.addEventListener("click", closeModal);
+    backdrop?.addEventListener("click", closeModal);
+
+    ratingButtons.forEach((button) => {
+        const rating = Number(button.dataset.rating);
+        button.addEventListener("mouseenter", () => paintStars(rating, "hovered"));
+        button.addEventListener("mouseleave", () => ratingButtons.forEach(star => star.classList.remove("hovered")));
+        button.addEventListener("click", () => {
+            selectedRating = rating;
+            ratingInput.value = String(rating);
+            paintStars(rating, "selected");
+            ratingHint.textContent = `${rating} out of 5 stars selected.`;
+        });
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && modal.classList.contains("active")) closeModal();
+    });
+
+    form?.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        message.textContent = "";
+        message.className = "review-form-message";
+
+        if (!selectedRating) {
+            message.textContent = "Please select a star rating.";
+            message.classList.add("error");
+            return;
+        }
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+
+        submitButton.disabled = true;
+        submitButton.textContent = "Submitting...";
+
+        try {
+            const response = await fetch(form.action, {
+                method: "POST",
+                body: new FormData(form),
+                headers: { Accept: "application/json" }
+            });
+            if (!response.ok) throw new Error("Review submission failed");
+
+            message.textContent = "Thank you! Your review was submitted for approval.";
+            message.classList.add("success");
+            form.reset();
+            selectedRating = 0;
+            ratingButtons.forEach(star => star.classList.remove("selected", "hovered"));
+            ratingHint.textContent = "Select your rating.";
+            setTimeout(closeModal, 1700);
+        } catch (error) {
+            message.textContent = "The review could not be submitted. Please try again.";
+            message.classList.add("error");
+        } finally {
+            submitButton.disabled = false;
+            submitButton.textContent = "Submit Review";
+        }
+    });
+});
