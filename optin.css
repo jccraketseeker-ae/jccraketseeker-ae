@@ -45,3 +45,100 @@ body.resource-modal-open { overflow: hidden; }
 .privacy-note { margin-top:13px; color:#99a5b5; font-size:9px; line-height:1.5; text-align:center; }
 @media (max-width:850px){ .resource-modal-content{grid-template-columns:1fr;padding:44px 28px;gap:32px}.resource-intro{text-align:center}.resource-benefits{width:min(520px,100%);margin:25px auto 0;text-align:left}.resource-form-card{width:min(540px,100%);margin:auto} }
 @media (max-width:520px){ .resource-modal{padding:10px}.resource-modal-dialog{max-height:calc(100vh - 20px);border-radius:20px}.resource-modal-content{padding:50px 17px 24px}.resource-form-card{padding:25px 18px}.resource-intro h2{font-size:34px}.resource-modal-close{top:10px;right:10px} }
+/* =========================================
+   VA TOOL BRAND COLORS
+========================================= */
+
+.va-dock-icon {
+    width: 74px;
+    height: 74px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 22px;
+    background: #f3f7fc;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+.va-dock-icon img,
+.va-dock-icon .iconify {
+    width: 43px;
+    height: 43px;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+/* Google tools */
+
+.icon-gmail {
+    background: #fff1f0;
+}
+
+.icon-calendar {
+    background: #eef4ff;
+}
+
+.icon-drive {
+    background: #f1f8ef;
+}
+
+.icon-docs {
+    background: #edf4ff;
+}
+
+.icon-sheets {
+    background: #edf8f1;
+}
+
+/* Microsoft tools */
+
+.icon-excel {
+    background: #eaf7ef;
+}
+
+.icon-word {
+    background: #edf3ff;
+}
+
+.icon-teams {
+    background: #f0efff;
+}
+
+/* Other VA tools */
+
+.icon-canva {
+    background: #ecfbfc;
+}
+
+.icon-trello {
+    background: #edf7ff;
+}
+
+.icon-zoom {
+    background: #edf3ff;
+}
+
+.icon-chatgpt {
+    background: #f1f3f5;
+}
+
+/* GIS tools */
+
+.icon-arcgis {
+    background: #eef7f1;
+}
+
+.icon-qgis {
+    background: #f4f7e9;
+}
+
+/* Hover effect */
+
+.va-dock-card:hover .va-dock-icon,
+.va-dock-card.va-active .va-dock-icon {
+    transform: translateY(-5px) scale(1.06);
+    box-shadow: 0 12px 28px rgba(16, 51, 93, 0.15);
+}
