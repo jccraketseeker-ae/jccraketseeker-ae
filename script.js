@@ -491,3 +491,51 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+
+/* ==================================================
+   LEAD GENERATION FORMS AND FEATURED LINKS
+================================================== */
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".featured-project-link[data-open-portfolio]").forEach(link => {
+    link.addEventListener("click", () => {
+      const category = link.dataset.openPortfolio;
+      window.setTimeout(() => {
+        document.querySelector(`.portfolio-tab[data-category="${category}"]`)?.click();
+      }, 250);
+    });
+  });
+
+  document.querySelectorAll(".lead-generation-form").forEach(form => {
+    const submitButton = form.querySelector('button[type="submit"]');
+    const message = form.querySelector(".lead-form-message");
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      message.textContent = "";
+      message.className = "lead-form-message";
+      submitButton.disabled = true;
+      const originalText = submitButton.textContent;
+      submitButton.textContent = "Submitting...";
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: new FormData(form),
+          headers: { Accept: "application/json" }
+        });
+        if (!response.ok) throw new Error("Submission failed");
+        message.textContent = form.id === "consultationForm"
+          ? "Thank you! Your consultation request has been sent."
+          : "Thank you! Your resource request has been sent.";
+        message.classList.add("success");
+        form.reset();
+      } catch (error) {
+        message.textContent = "The form could not be submitted. Please try again.";
+        message.classList.add("error");
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = originalText;
+      }
+    });
+  });
+});
