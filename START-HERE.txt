@@ -1,12 +1,10 @@
-READY-TO-PASTE WEBSITE FILES
+JOY PORTFOLIO — REVIEWS UPDATE
 
-1. Replace your current files with: index.html, blog.html, style.css, script.js, optin.css, and optin.js.
-2. Keep your images folder and resume PDF in the same project folder.
-3. In index.html, replace YOUR_FORM_ID with your real Formspree form ID.
-4. Open index.html with Live Server and click Services to test the popup.
-5. Upload/push all six files to GitHub.
-
-You no longer need portfolio.html or index(1).html after index.html is working.
-
-REVIEWS SECTION:
-The Reviews menu and section are included. Replace the sample review text, client names, and roles only with genuine feedback shared with permission.
+1. Replace the matching HTML, CSS, and JavaScript files in your VS Code project.
+2. Keep your existing images folder and JOY RESUME.pdf.
+3. Open index.html with Live Server.
+4. The Administrative portfolio tab now opens first.
+5. The Leave a Review form sends submissions to your Formspree endpoint:
+   https://formspree.io/f/mykrakoy
+6. Reviews are sent privately for your approval. They do not publish automatically.
+7. Push the updated files to GitHub after testing.
