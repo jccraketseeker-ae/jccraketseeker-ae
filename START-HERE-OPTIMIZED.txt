@@ -1,0 +1,16 @@
+JOY PORTFOLIO — OPTIMIZED GITHUB PAGES VERSION
+
+Improvements included:
+- Consistent navigation and footer across blog pages
+- SEO page titles, descriptions, canonical URLs, Open Graph, and Twitter metadata
+- Deferred JavaScript
+- Minified production CSS and JavaScript
+- Lazy loading and async decoding for noncritical images
+- High-priority profile image
+- sitemap.xml, robots.txt, and custom 404.html
+- Safer external links
+
+Upload all files in this ZIP to your repository, replacing matching files.
+Keep your existing images folder.
+
+Important: Your images folder was not included in the website ZIP, so image compression was not performed. Convert large portfolio images to WebP separately for the biggest performance improvement.
